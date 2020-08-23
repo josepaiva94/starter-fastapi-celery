@@ -15,14 +15,14 @@ AMQP_PASSWORD = os.getenv('AMQP_PASSWORD', 'password')
 
 
 celery_app = Celery(
-    "worker",
-    backend="redis://%s:%s@%s:%d/0" % (
+    'worker',
+    backend='redis://%s:%s@%s:%d/0' % (
         REDIS_USERNAME,
         REDIS_PASSWORD,
         REDIS_HOST,
         REDIS_PORT
     ),
-    broker="amqp://%s:%s@%s:%d//" % (
+    broker='amqp://%s:%s@%s:%d//' % (
         AMQP_USERNAME,
         AMQP_PASSWORD,
         AMQP_HOST,
@@ -30,6 +30,6 @@ celery_app = Celery(
     )
 )
 celery_app.conf.task_routes = {
-    "app.worker.celery_worker.test_celery": "test-queue"}
+    'app.worker.celery_worker.test_celery': 'test-queue'}
 
 celery_app.conf.update(task_track_started=True)
