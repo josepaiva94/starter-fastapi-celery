@@ -3,6 +3,8 @@ FROM python:3-alpine
 LABEL maintainer="José Carlos Paiva <josepaiva94@gmail.com>"
 LABEL description="Docker container w/ the API."
 
+ENV CRYPTOGRAPHY_DONT_BUILD_RUST=1
+
 COPY pyproject.toml .
 
 RUN apk update && \

@@ -11,6 +11,7 @@ services:
       - "15672:15672"
     volumes:
       - "rabbitmq_data:/var/lib/rabbitmq"
+      - "./docker/rabbitmq/rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf"
 
   redis:
     build: ./docker/redis
